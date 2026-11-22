@@ -47,6 +47,12 @@ public class Cliente extends Usuario {
      }
 
     public void desativarCliente(){
+        for (Animal animal : Animal.listarAnimal()) {
+            if (animal.getCliente().getId() == getId()) {
+                Agendamento.cancelarFuturosDoAnimal(animal);
+                
+            }
+        }
             desativarUsuario();
     }
 

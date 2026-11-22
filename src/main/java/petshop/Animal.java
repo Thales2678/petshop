@@ -90,6 +90,7 @@ public class Animal {
     }
 
     public void desativarAnimal(){
+       Agendamento.cancelarFuturosDoAnimal(this);
         this.ativo = false;
     }
 
