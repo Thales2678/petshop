@@ -58,7 +58,7 @@ public abstract class Usuario{
     }
    
     public void cadastrarUsuario(){
-    if (emailEmUso(email)) {
+    if (emailEmUso(email, 0)) {
                 throw new IllegalArgumentException("Já existe um usuário com este e-mail.");
             }
             usuarios.add(this);
@@ -76,7 +76,7 @@ public abstract class Usuario{
     public void atualizarUsuario(String nome, String email, String senha){
         String novoNome = Validacao.texto(nome, "Nome");
         String novoEmail = Validacao.email(email);
-        if (emailEmUso(novoEmail)) {
+        if (emailEmUso(novoEmail, id)) {
                 throw new IllegalArgumentException("Já existe um usuário com este e-mail.");
             }
             if (senha != null && !senha.isEmpty()) {
@@ -101,9 +101,9 @@ public abstract class Usuario{
             return this.email.equalsIgnoreCase(email.trim()) && this.senha.equals(criptografar(senha));
     }
 
-    private static boolean emailEmUso(String email) {
+    private static boolean emailEmUso(String email, int id_usuario) {
             for (Usuario usuario : usuarios) {
-                if (usuario.email.equalsIgnoreCase(email)) {
+                if (usuario.email.equalsIgnoreCase(email) && usuario.id != id_usuario) {
                     return true;
                 }
             }

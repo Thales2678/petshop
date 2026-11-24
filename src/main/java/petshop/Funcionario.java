@@ -105,7 +105,7 @@ public class Funcionario extends Usuario{
         for (Funcionario funcionario : funcionarios) {
             relatorio.append(Validacao.formatar("%-5d %-12.12s %-26.26s %-18s %s%n",
                     funcionario.getId(), funcionario.matricula, funcionario.getNome(), funcionario.cargo,
-                    funcionario.isAtivo() ? "Sim" : "Não"));
+                    funcionario.isAtivo() ? "Ativo" : "Inativo"));
         }
         relatorio.append(Validacao.formatar("%nTotal de funcionários: %d%n", funcionarios.size()));
         relatorio.append("---------------------\n");
@@ -113,6 +113,10 @@ public class Funcionario extends Usuario{
 
     }
 
+    @Override
+    public String toString() {
+        return getNome() + " (" + matricula + ")";
+    }
 
 
 }

@@ -105,15 +105,15 @@ public static List<Servico> buscarServico(String nome){
 public static String gerarRelatorioServicos(){
 
     StringBuilder relatorio = new StringBuilder();
-    relatorio.append("RELATORIO DE SERVIÇOS%n%n");
+    relatorio.append(Validacao.formatar("RELATÓRIO DE SERVIÇOS%n%n"));
     relatorio.append("=====================\n");
-    relatorio.append(Validacao.formatar("%-5s %-28s %12s %14s  %s%n",
+    relatorio.append(Validacao.formatar("%-5s %-28s %-12s %-14s %s%n",
                                       "ID", "Nome", "Preço (R$)", 
                                       "Duração (min)", "Situação"));
     for (Servico servico : servicos) {
-        relatorio.append(Validacao.formatar("%-5d %-28.28s %12.2f %14d  %s%n",
+        relatorio.append(Validacao.formatar("%-5d %-28.28s %-12.2f %-14d %s%n",
                         servico.id, servico.nome, servico.preco, servico.duracaoMinutos,
-                        servico.ativo ? "Sim" : "Não"));
+                        servico.ativo ? "Ativo" : "Inativo"));
     }
         relatorio.append(Validacao.formatar("%nTotal de serviços: %d%n", servicos.size())); 
         relatorio.append("---------------------\n");
