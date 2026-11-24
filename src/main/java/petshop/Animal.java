@@ -102,11 +102,16 @@ public class Animal {
         String termo = Validacao.opcional(nome).toLowerCase();
         List<Animal> animaisEncontrados = new ArrayList<>();
         for (Animal animal : animais) {
-            if (animal.getNome().contains(termo)) {
+            if (animal.getNome().toLowerCase().contains(termo)) {
                 animaisEncontrados.add(animal);
             }
         }
         return animaisEncontrados;
+    }
+
+     @Override
+    public String toString() {
+        return nome + " (" + especie + ") #" + id;
     }
 
 }

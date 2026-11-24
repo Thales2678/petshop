@@ -93,11 +93,15 @@ public class Cliente extends Usuario {
                 }
                 relatorio.append(Validacao.formatar("%-5d %-24.24s %-28.28s %-15.15s %-30.30s %-9s %d%n",
                         cliente.getId(), cliente.getNome(), cliente.getEmail(), cliente.getTelefone(), cliente.getEndereco(),
-                        cliente.isAtivo() ? "Sim" : "Não", quantidadeAnimais));
+                        cliente.isAtivo() ? "Ativo" : "Inativo", quantidadeAnimais));
             }
             relatorio.append(Validacao.formatar("%nTotal de clientes: %d%n", clientes.size()));
             return relatorio.toString();
     }
 
+    @Override
+    public String toString() {
+        return getNome() + " (" + getEmail() + ")";
+    }
 
 }
