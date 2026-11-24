@@ -43,7 +43,7 @@ public class TelaPrincipal extends JFrame {
         topo.setBorder(BorderFactory.createEmptyBorder(8, 12, 8, 12));
         topo.add(new JLabel("Usuário: " + usuario.getNome() + " - " + descreverPerfil()), BorderLayout.WEST);
         JButton sair = new JButton("Sair");
-        sair.addActionListener(evento -> sair());
+        sair.addActionListener(evento -> logout());
         topo.add(sair, BorderLayout.EAST);
         return topo;
     }
@@ -83,7 +83,7 @@ public class TelaPrincipal extends JFrame {
         return abas;
     }
 
-    private void sair() {
+    private void logout() {
         dispose();
         new TelaLogin().setVisible(true);
     }
